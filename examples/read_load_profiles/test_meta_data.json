@@ -1,0 +1,23 @@
+{
+    "data_type": "Load Profile",
+    "data_type_specific_load_type": {
+        "name": "Test Machine",
+        "first_start_time": "2022-01-02 23:00:00",
+        "last_end_time": "2022-01-02 23:00:00",
+        "total_energy": 600,
+        "minimum_power": 0,
+        "maximum_power": 1,
+        "power_unit": "MW",
+        "energy_unit": "MJ",
+        "load_type": "Electricity",
+        "step_duration": "01:00:00"
+    },
+    "field_names": {
+        "start_time": "start_time",
+        "end_time": "end_time",
+        "energy_quantity": "energy_quantity",
+        "energy_unit": "energy_unit",
+        "average_power_consumption": "average_power_consumption",
+        "power_unit": "power_unit"
+    }
+}

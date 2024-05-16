@@ -4,9 +4,8 @@ from dataclasses import dataclass
 import pandas
 
 
-
 @dataclass(slots=True, frozen=True)
-class LoadProfileEntry():
+class LoadProfileEntry:
     """Represents the energy demand of
     stream or process step in the given time
     period.
@@ -20,22 +19,29 @@ class LoadProfileEntry():
     average_power_consumption: float
     power_unit: str
 
-@dataclass
-class LoadProfileMetaData():
+
+@dataclass(kw_only=True)
+class LoadProfileMetaDataNonUniform:
     """Provides a list of LoadProfileEntry, a data frame
     from this list and meta data about this list.
     """
 
     name: str
-    object_type: str
-    list_of_load_profiles: list[LoadProfileEntry]
     data_frame: pandas.DataFrame
     first_start_time: datetime.datetime
     last_end_time: datetime.datetime
     load_type: str
     power_unit: str
     energy_unit: str
-    maximum_energy: float
     maximum_power: float
     minimum_power: float
     total_energy: float
+
+
+@dataclass(kw_only=True)
+class LoadProfileMetaData(LoadProfileMetaDataNonUniform):
+    """Provides a list of LoadProfileEntry, a data frame
+    from this list and meta data about this list.
+    """
+
+    step_duration: datetime.timedelta
