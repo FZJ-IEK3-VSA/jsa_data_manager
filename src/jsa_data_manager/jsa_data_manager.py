@@ -42,6 +42,7 @@ class LoadProfileDataManager:
             filepath_or_buffer=path_to_data_frame,
             delimiter=",",
             parse_dates=date_columns,
+            index_col="index",
         )
         load_profile_meta_data = LoadProfileMetaData(
             data_frame=data_frame,

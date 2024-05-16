@@ -6,7 +6,7 @@
         "last_end_time": "2022-01-02 23:00:00",
         "total_energy": 600,
         "minimum_power": 0,
-        "maximum_power": 1,
+        "maximum_power": 0.5,
         "power_unit": "MW",
         "energy_unit": "MJ",
         "load_type": "Electricity",
