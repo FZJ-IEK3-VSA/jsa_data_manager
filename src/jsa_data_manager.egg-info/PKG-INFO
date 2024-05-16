@@ -1,0 +1,8 @@
+Metadata-Version: 2.1
+Name: jsa_data_manager
+Version: 0.0.1
+Summary: A package to create energy load curves for industry locations in Germany
+Author-email: Julian Belina <j.belina@fz-juelich.de>
+Keywords: Load Profile,Simulator,Energy Simulation,Industrial Process
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown

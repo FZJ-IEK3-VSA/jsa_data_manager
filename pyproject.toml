@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=64.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.package-data]
+"ethos_penalps" = ["py.typed"]
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project]
+name = "jsa_data_manager"
+version = "0.0.1"
+description = "Manages standard input and output data of JSA software tools."
+readme = "README.md"
+authors = [
+    { name = "Julian Belina", email = "j.belina@fz-juelich.de" },
+]
+license = { file = "LICENSE" }
+
+
+requires-python = ">=3.10"
+#Configureation options
+# https://docs.pytest.org/en/7.1.x/reference/reference.html#configuration-options
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    # "ignore::DeprecationWarning:matplotlib",
+   
+
+] # How to configure Filterwarning:minversion = "6.0"
+# https://docs.pytest.org/en/7.1.x/reference/reference.html#confval-pythonpath
+testpaths = ["test"] # Sets the path where to look for tests
+pythonpath =["test"] # Sets the path which should be prepended to pythonpath relative to the root folder
+
+console_output_style = "count"
+# https://docs.python.org/3/library/warnings.html#warning-filter
+# action:message:category:module:line
+# Ommit a field by add ing ":" for each ommited field
+# Actions are: "default"
+# "error", "ignore", "always", "module", "once"
+markers = [
+]
+
+[tool.mypy]
+python_version = "3.10"
+warn_return_any = true
+warn_unused_configs = true
+check_untyped_defs= true
+
+
+
+[tool.ruff.lint]
+ignore = ["F401"]
