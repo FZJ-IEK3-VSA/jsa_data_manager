@@ -2,8 +2,10 @@ import pandas
 import json
 
 from jsa_data_manager.data_types import (
-    LoadProfileMetaData,
-    LoadProfileMetaDataNonUniform,
+    TimeSeriesColumnEntryMetaData,
+    SoftwareRunData,
+    TimeSeriesFileMetaData,
+    TimeStampColumnMetaData,
 )
 
 
@@ -29,52 +31,74 @@ class LoadProfileDataManager:
 
     def read_load_profile_data(
         self, path_to_data_frame: str, path_to_meta_data: str
-    ) -> LoadProfileMetaData:
+    ) -> TimeSeriesFileMetaData:
         meta_data_dictionary = self.read_meta_data_dictionary(
             path_to_meta_data=path_to_meta_data
         )
-
+        time_stamp_column_meta_data = self.get_time_stamp_column_meta_data(
+            meta_data_dictionary=meta_data_dictionary
+        )
         date_columns = [
-            meta_data_dictionary["field_names"]["start_time"],
-            meta_data_dictionary["field_names"]["end_time"],
+            time_stamp_column_meta_data.start_column_name,
+            time_stamp_column_meta_data.end_column_name,
         ]
         data_frame = pandas.read_csv(
             filepath_or_buffer=path_to_data_frame,
             delimiter=",",
             parse_dates=date_columns,
-            index_col="index",
+            index_col=time_stamp_column_meta_data.index_column_name,
         )
-        load_profile_meta_data = LoadProfileMetaData(
+
+        software_run_data = SoftwareRunData(
+            **meta_data_dictionary["time_series_meta_data"]["software_run_data"]
+        )
+        list_of_column_meta_data = []
+        for column_meta_data in meta_data_dictionary["time_series_meta_data"][
+            "column_list"
+        ]:
+            list_of_column_meta_data.append(
+                TimeSeriesColumnEntryMetaData(**column_meta_data)
+            )
+        load_profile_meta_data = TimeSeriesFileMetaData(
+            name=meta_data_dictionary["time_series_meta_data"]["name"],
             data_frame=data_frame,
-            **meta_data_dictionary["data_type_specific_load_type"],
-            # name=meta_data_dictionary["data_type_specific_load_type"]["name"],
-            # first_start_time=meta_data_dictionary["data_type_specific_load_type"][
-            #     "first_start_time"
-            # ],
-            # last_end_time=meta_data_dictionary["data_type_specific_load_type"][
-            #     "last_end_time"
-            # ],
-            # total_energy=meta_data_dictionary["data_type_specific_load_type"][
-            #     "total_energy"
-            # ],
-            # minimum_power=meta_data_dictionary["data_type_specific_load_type"][
-            #     "minimum_power"
-            # ],
-            # maximum_power=meta_data_dictionary["data_type_specific_load_type"][
-            #     "maximum_power"
-            # ],
-            # power_unit=meta_data_dictionary["data_type_specific_load_type"][
-            #     "power_unit"
-            # ],
-            # energy_unit=meta_data_dictionary["data_type_specific_load_type"][
-            #     "energy_unit"
-            # ],
-            # load_type=meta_data_dictionary["data_type_specific_load_type"]["load_type"],
-            # step_duration=meta_data_dictionary["data_type_specific_load_type"][
-            #     "step_duration"
-            # ],
+            column_list=list_of_column_meta_data,
+            software_run_data=software_run_data,
+            data_format_standard=meta_data_dictionary["data_format_standard"],
+            first_start_time=meta_data_dictionary["time_series_meta_data"][
+                "first_start_time"
+            ],
+            last_end_time=meta_data_dictionary["time_series_meta_data"][
+                "last_end_time"
+            ],
+            time_stamp_column_meta_data=time_stamp_column_meta_data,
         )
         return load_profile_meta_data
+
+    def get_time_stamp_column_meta_data(
+        self, meta_data_dictionary: dict[str, dict]
+    ) -> TimeStampColumnMetaData:
+        time_stamp_column_meta_data = TimeStampColumnMetaData(
+            index_column_name=meta_data_dictionary["time_series_meta_data"][
+                "time_stamp_column_meta_data"
+            ]["index_column_name"],
+            index_column_number=meta_data_dictionary["time_series_meta_data"][
+                "time_stamp_column_meta_data"
+            ]["index_column_number"],
+            start_column_name=meta_data_dictionary["time_series_meta_data"][
+                "time_stamp_column_meta_data"
+            ]["start_column_name"],
+            start_column_number=meta_data_dictionary["time_series_meta_data"][
+                "time_stamp_column_meta_data"
+            ]["start_column_number"],
+            end_column_name=meta_data_dictionary["time_series_meta_data"][
+                "time_stamp_column_meta_data"
+            ]["end_column_name"],
+            end_column_number=meta_data_dictionary["time_series_meta_data"][
+                "time_stamp_column_meta_data"
+            ]["end_column_number"],
+        )
+        return time_stamp_column_meta_data
 
 
 class JSADataManager:

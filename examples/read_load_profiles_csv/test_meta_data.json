@@ -1,23 +1,29 @@
 {
-    "data_type": "Load Profile",
-    "data_type_specific_load_type": {
-        "name": "Test Machine",
+    "data_format_standard": "JSA 1.0 Load Profile Standard",
+    "time_series_meta_data": {
+        "name": "Test Load Profile",
         "first_start_time": "2022-01-02 23:00:00",
         "last_end_time": "2022-01-02 23:00:00",
-        "total_energy": 600,
-        "minimum_power": 0,
-        "maximum_power": 0.5,
-        "power_unit": "MW",
-        "energy_unit": "MJ",
-        "load_type": "Electricity",
-        "step_duration": "01:00:00"
-    },
-    "field_names": {
-        "start_time": "start_time",
-        "end_time": "end_time",
-        "energy_quantity": "energy_quantity",
-        "energy_unit": "energy_unit",
-        "average_power_consumption": "average_power_consumption",
-        "power_unit": "power_unit"
+        "software_run_data": {
+            "data_source": "fine",
+            "software_version": "2.23.3",
+            "user_name": "k-schulze",
+            "run_guid": "1f2e2503-d0db-4736-97f2-c1e504b8dbcb"
+        },
+        "column_list": [
+            {
+                "column_number": 1,
+                "column_name": "average_power_consumption",
+                "unit": "MW"
+            }
+        ],
+        "time_stamp_column_meta_data": {
+            "index_column_number": 0,
+            "index_column_name": "index",
+            "start_column_number": 1,
+            "start_column_name": "start_time",
+            "end_column_number": 2,
+            "end_column_name": "end_time"
+        }
     }
 }

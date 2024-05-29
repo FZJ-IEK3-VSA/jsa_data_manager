@@ -1,7 +1,6 @@
 import pathlib
 from jsa_data_manager.jsa_data_manager import JSADataManager
 
-
 current_directory = pathlib.Path(__file__).parent
 jsa_data_manager = JSADataManager()
 
@@ -19,4 +18,5 @@ load_profile_meta_data = (
     )
 )
 
-print(load_profile_meta_data)
+print(load_profile_meta_data.data_frame)
+print("")
