@@ -6,3 +6,4 @@ dependencies:
   - conda-forge::openpyxl
   - conda-forge::netcdf4
   - conda-forge::xarray
+  - conda-forge::pydantic

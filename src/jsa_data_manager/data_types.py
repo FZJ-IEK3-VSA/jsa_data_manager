@@ -5,10 +5,17 @@ from enum import StrEnum
 from typing import Literal
 
 import pandas
+import pydantic
+from pydantic import BaseModel, Field
+from pydantic import BaseModel as PydanticBaseModel
 
 
-@dataclass(kw_only=True)
-class TimeStampColumnMetaData:
+class BaseModel(PydanticBaseModel):
+    class Config:
+        arbitrary_types_allowed = True
+
+
+class TimeStampColumnMetaData(BaseModel):
     index_column_number: int
     index_column_name: str
     start_column_number: int
@@ -17,8 +24,7 @@ class TimeStampColumnMetaData:
     end_column_name: str
 
 
-@dataclass(kw_only=True)
-class TimeSeriesColumnEntryMetaData:
+class TimeSeriesColumnEntryMetaData(BaseModel):
     column_number: int
     column_name: str
     unit: str
@@ -48,16 +54,14 @@ class DataSourceTypes(StrEnum):
     DATA_SOURCE = "SoftwareSource"
 
 
-@dataclass(kw_only=True)
-class DataSource:
+class DataSource(BaseModel):
     source_type: Literal[DataSourceTypes.DATA_SOURCE]
     source_name: str
     reference: str  # URL, doi or other reference to the data set
     guid: str
 
 
-@dataclass(kw_only=True)
-class SoftwareSource:
+class SoftwareSource(BaseModel):
     source_type: Literal[DataSourceTypes.SOFTWARE_SOURCE]
     software_name: str
     version: str  # 2.2.1
@@ -86,15 +90,24 @@ class TimeSeriesStandards(StrEnum):
     V1_0 = "JSA TimeSeriesStandard 1.0"
 
 
-@dataclass(kw_only=True)
-class TimeSeriesFileMetaData:
+class TimeSeriesFileMetaDataWODataFrame(BaseModel):
     name: str
-    data_frame: pandas.DataFrame
     data_source: DataSource | SoftwareSource
     time_stamp_column_meta_data: TimeStampColumnMetaData
     column_list: list[TimeSeriesColumnEntryMetaData]
     delimiter: Literal[","]
     data_format_standard: Literal[TimeSeriesStandards.V1_0]
+
+
+class TimeSeriesFileMetaData(BaseModel):
+    name: str
+    data_frame: pandas.DataFrame = Field(exclude=True, title="data_frame")
+    data_source: DataSource | SoftwareSource
+    time_stamp_column_meta_data: TimeStampColumnMetaData
+    column_list: list[TimeSeriesColumnEntryMetaData]
+    delimiter: Literal[","]
+    data_format_standard: Literal[TimeSeriesStandards.V1_0]
+    # data_format_standard: str
 
 
 # @dataclass(kw_only=True)
