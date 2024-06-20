@@ -1,18 +1,14 @@
 import dataclasses
 import datetime
-from dataclasses import dataclass
 from enum import StrEnum
 from typing import Literal
 
 import pandas
 import pydantic
 from pydantic import BaseModel, Field
-from pydantic import BaseModel as PydanticBaseModel
+from pydantic.dataclasses import dataclass
 
-
-class BaseModel(PydanticBaseModel):
-    class Config:
-        arbitrary_types_allowed = True
+# from pydantic import BaseModel as PydanticBaseModel
 
 
 class TimeStampColumnMetaData(BaseModel):
@@ -99,6 +95,7 @@ class TimeSeriesFileMetaDataWODataFrame(BaseModel):
     data_format_standard: Literal[TimeSeriesStandards.V1_0]
 
 
+# @dataclass(config={"arbitrary_types_allowed": True})
 class TimeSeriesFileMetaData(BaseModel):
     name: str
     data_frame: pandas.DataFrame = Field(exclude=True, title="data_frame")
@@ -107,7 +104,10 @@ class TimeSeriesFileMetaData(BaseModel):
     column_list: list[TimeSeriesColumnEntryMetaData]
     delimiter: Literal[","]
     data_format_standard: Literal[TimeSeriesStandards.V1_0]
-    # data_format_standard: str
+
+    class Config:
+        # Allows not validated datatypes like pandas data frame
+        arbitrary_types_allowed = True
 
 
 # @dataclass(kw_only=True)
