@@ -1,5 +1,5 @@
 {
-    "data_format_standard": "JSA 1.0 Load Profile Standard",
+    "data_format_standard": "JSA 1.0 Time Series Standard",
     "time_series_meta_data": {
         "name": "Test Load Profile",
         "first_start_time": "2022-01-02 23:00:00",
