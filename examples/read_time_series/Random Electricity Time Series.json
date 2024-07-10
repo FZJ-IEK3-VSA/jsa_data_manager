@@ -1,1 +1,32 @@
-"{\"name\":\"Random Electricity Time Series\",\"data_source\":{\"source_type\":\"DataSource\",\"software_name\":\"Random Time Series Generator\",\"version\":\"1.0\",\"user_name\":\"j-belina\",\"guid\":\"5b17be41-a4a3-4a95-a893-a2da2921444e\"},\"time_stamp_column_meta_data\":{\"index_column_number\":0,\"index_column_name\":\"index\",\"start_column_number\":1,\"start_column_name\":\"start\",\"end_column_number\":2,\"end_column_name\":\"end\"},\"column_list\":[{\"column_number\":1,\"column_name\":\"Electicity Demand\",\"unit\":\"kW\",\"description\":\"Electricity Demand\",\"tags\":null,\"min\":null,\"max\":null,\"sum\":null}],\"delimiter\":\",\",\"data_format_standard\":\"JSA TimeSeriesStandard 1.0\"}"
+{
+    "name": "Random Electricity Time Series",
+    "data_source": {
+        "source_type": "SoftwareSource",
+        "software_name": "Random Time Series Generator",
+        "version": "1.0",
+        "user_name": "Julian",
+        "guid": "c80438f0-b4c4-4529-a311-5c30fb762530"
+    },
+    "time_stamp_column_meta_data": {
+        "index_column_number": 0,
+        "index_column_name": "index",
+        "start_column_number": 1,
+        "start_column_name": "start",
+        "end_column_number": 2,
+        "end_column_name": "end"
+    },
+    "column_list": [
+        {
+            "column_number": 3,
+            "column_name": "Electricity Demand",
+            "unit": "kW",
+            "description": "Electricity Demand",
+            "tags": null,
+            "min": null,
+            "max": null,
+            "sum": null
+        }
+    ],
+    "delimiter": ",",
+    "data_format_standard": "JSA TimeSeriesStandard 1.0"
+}

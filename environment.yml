@@ -1,4 +1,4 @@
-name: jsa_data_manager_env
+# name: jsa_data_manager_env2
 
 dependencies:
   - conda-forge::python >=3.10

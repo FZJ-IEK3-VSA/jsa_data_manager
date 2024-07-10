@@ -4,21 +4,20 @@ import json
 import pathlib
 import uuid
 import warnings
-import json
 
 import pandas
-from pydantic import BaseModel
 from jsa_data_manager.data_types import (
     DataSource,
     DataSourceTypes,
     SoftwareSource,
     TimeSeriesColumnEntryMetaData,
     TimeSeriesFileMetaData,
+    TimeSeriesFileMetaDataWODataFrame,
     TimeSeriesStandards,
     TimeStampColumnMetaData,
-    TimeSeriesFileMetaDataWODataFrame,
 )
 from jsa_data_manager.warning_and_error import CorruptedData, IncompleteData
+from pydantic import BaseModel
 
 
 class LoadProfileDataManager:
@@ -49,11 +48,10 @@ class LoadProfileDataManager:
         self, path_to_json: str | pathlib.Path
     ) -> TimeSeriesFileMetaDataWODataFrame:
         with open(str(path_to_json), encoding="utf-8") as file:
-            time_series_dictionary = json.load(file)
+            json_dict = json.load(file)
+            json_string = json.dumps(json_dict)
         time_series_file_meta_data_without_data_frame = (
-            TimeSeriesFileMetaDataWODataFrame.model_validate_json(
-                json_data=time_series_dictionary
-            )
+            TimeSeriesFileMetaDataWODataFrame.model_validate_json(json_data=json_string)
         )
         return time_series_file_meta_data_without_data_frame
 
@@ -102,22 +100,10 @@ class LoadProfileDataManager:
         software_name: str,
         software_version: str,
         column_list: list[TimeSeriesColumnEntryMetaData],
-        start_column_name: str = "start",
-        end_column_name: str = "end",
-        index_column_name: str = "index",
+        time_stamp_column_meta_data: TimeStampColumnMetaData,
         delimiter=",",
     ):
-        start_column_number = data_frame.columns.get_loc(start_column_name) + 1
-        end_column_number = data_frame.columns.get_loc(end_column_name) + 1
-        index_column_number = 0
-        time_stamp_column_meta_data = TimeStampColumnMetaData(
-            index_column_number=index_column_number,
-            index_column_name=index_column_name,
-            start_column_name=start_column_name,
-            start_column_number=start_column_number,
-            end_column_name=end_column_name,
-            end_column_number=end_column_number,
-        )
+
         software_version_str = str(software_version)
         try:
             user_name = str(getpass.getuser())
@@ -151,7 +137,8 @@ class LoadProfileDataManager:
         with open(
             path_to_file_without_extension_str + ".json", "w", encoding="utf-8"
         ) as file:
-            json.dump(obj=meta_data_json_string, fp=file)
+            json_dict = json.loads(s=meta_data_json_string)
+            json.dump(obj=json_dict, fp=file)
 
 
 class JSADataManager:

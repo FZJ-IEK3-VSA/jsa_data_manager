@@ -46,15 +46,24 @@ class TimeSeriesColumnEntryMetaData(BaseModel):
 
 
 class DataSourceTypes(StrEnum):
-    SOFTWARE_SOURCE = "DataSource"
-    DATA_SOURCE = "SoftwareSource"
+    SOFTWARE_SOURCE = "SoftwareSource"
+    DATA_SOURCE = "DataSource"
 
 
 class DataSource(BaseModel):
     source_type: Literal[DataSourceTypes.DATA_SOURCE]
     source_name: str
+    user_name: str
     reference: str  # URL, doi or other reference to the data set
     guid: str
+
+
+# @dataclass(kw_only=True)
+# class DataSource:
+#     source_name: SMARD
+#     description: https://www.smard.de/page/home/marktdaten/78?marketDataAttributes=%7B%22resolution%22:%22hour%22,%22from%22:1717970400000,%22to%22:1718920799999,%22moduleIds%22:%5B1004066,1001226,1001225,1004067,1004068,1001228,1001223,1004069,1004071,1004070,1001227,5000410,6000411,2005097%5D,%22selectedCategory%22:1,%22activeChart%22:false,%22style%22:%22color%22,%22categoriesModuleOrder%22:%7B%7D,%22region%22:%22DE%22%7D
+#     user_name: k-schulze
+#     guid: 530cd955-a392-4c48-8355-f7753ac3a3e3
 
 
 class SoftwareSource(BaseModel):
@@ -66,13 +75,6 @@ class SoftwareSource(BaseModel):
     )
     guid: str
 
-
-# @dataclass(kw_only=True)
-# class DataSource:
-#     source_name: SMARD
-#     description: https://www.smard.de/page/home/marktdaten/78?marketDataAttributes=%7B%22resolution%22:%22hour%22,%22from%22:1717970400000,%22to%22:1718920799999,%22moduleIds%22:%5B1004066,1001226,1001225,1004067,1004068,1001228,1001223,1004069,1004071,1004070,1001227,5000410,6000411,2005097%5D,%22selectedCategory%22:1,%22activeChart%22:false,%22style%22:%22color%22,%22categoriesModuleOrder%22:%7B%7D,%22region%22:%22DE%22%7D
-#     user_name: k-schulze
-#     guid: 530cd955-a392-4c48-8355-f7753ac3a3e3
 
 # @dataclass(kw_only=True)
 # class SoftwareSource:
