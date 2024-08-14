@@ -1,9 +1,11 @@
+<a href="https://www.fz-juelich.de/en/ice/ice-2"><img src="https://github.com/FZJ-IEK3-VSA/README_assets/blob/main/JSA-Header.svg?raw=True" alt="Forschungszentrum Juelich Logo" width="300px"></a>
 # Jülich System Analysis DataManager
+
 This library can be used to read and write data and the corresponding Meta Data according to the  Meta data standard of the Jülich System Analysis Meta Data standard.
 Currently only the meta data standard for the time series data is implemented. Further data types are in discussion.
 
 # Installation of the jsa_data_manager
-## 1. Clone jsa_papckage
+## 1. Clone jsa_data_manager
 ```git clone https://jugit.fz-juelich.de/iek-3/shared-code/jsa_data_manager.git```
 
 ## 2. Deactivate base environment
@@ -11,12 +13,12 @@ permanent solution if you don't want the base env to activate automatically ever
 ````conda config --set auto_activate_base false```
 or simply
 ````conda deactivate```
-**Importent step** else you might run into problems during installation of the package
+**Important step** else you might run into problems during installation of the package
 
 ## 3. Set up an environment
 ```conda env create -n jsa_data_manager_env --file environment.yml```
 or update an existing environment
-```conda env update -n testing_with julian --file environment.yml```
+```conda env update -n jsa_data_manager_env --file environment.yml```
 
 ## 4. Activate your environment
 ```conda activate jsa_data_manager_env```
@@ -39,3 +41,41 @@ at the same time, add meta data to your time series and save your time_series_da
 
 At the moment, only the *software case* is taken into account here. This means: You have created a time_series_data_frame with RESkit or another ETHOS.Suite package, for example. Various meta data can be added here with the *write_time_series_meta_data_software* function. In this particular software case, this is the name of the software and its version. 
 Other cases will follow soon. For example, time series from external sources.
+
+## License
+
+MIT License
+
+Copyright (C) 2024 FZJ-ICE-2
+
+Active Developers: Julian Belina, Lilly Madeisky
+
+Alumni: Robin Beer, Henrik Büsing, Dilara Caglayan, Timo Kannengießer, Leander Kotzur, Stefan Kraus, Peter Markewitz, Lars Nolting,Stanley Risch, Martin Robinius, Bismark Singh, Andreas Smolenko, Peter Stenzel, Chloi Syranidou, Johannes Thürauf, Lara Welder, Michael Zier
+
+You should have received a copy of the MIT License along with this program.
+If not, see https://opensource.org/licenses/MIT
+
+
+## About Us 
+
+<a href="https://www.fz-juelich.de/en/ice/ice-2"><img src="https://github.com/FZJ-IEK3-VSA/README_assets/blob/main/iek3-square.png?raw=True" alt="Institute image ICE-2" width="280" align="right" style="margin:0px 10px"/></a>
+
+We are the <a href="https://www.fz-juelich.de/en/ice/ice-2">Institute of Climate and Energy Systems (ICE) - Jülich Systems Analysis</a> belonging to the <a href="https://www.fz-juelich.de/en">Forschungszentrum Jülich</a>. Our interdisciplinary department's research is focusing on energy-related process and systems analyses. Data searches and system simulations are used to determine energy and mass balances, as well as to evaluate performance, emissions and costs of energy systems. The results are used for performing comparative assessment studies between the various systems. Our current priorities include the development of energy strategies, in accordance with the German Federal Government’s greenhouse gas reduction targets, by designing new infrastructures for sustainable and secure energy supply chains and by conducting cost analysis studies for integrating new technologies into future energy market frameworks.
+
+## Contributions and Support
+Every contributions are welcome:
+- If you have a question, you can start a [Discussion](https://github.com/FZJ-IEK3-VSA/FINE/discussions). You will get a response as soon as possible.
+- If you want to report a bug, please open an [Issue](https://github.com/FZJ-IEK3-VSA/FINE/issues/new). We will then take care of the issue as soon as possible.
+- If you want to contribute with additional features or code improvements, open a [Pull request](https://github.com/FZJ-IEK3-VSA/FINE/pulls).
+
+## Code of Conduct
+Please respect our [code of conduct](CODE_OF_CONDUCT.md).
+
+## Acknowledgement
+
+
+This work was supported by the Helmholtz Association under the program ["Energy System Design"](https://www.helmholtz.de/en/research/research-fields/energy/energy-system-design/).
+
+<p float="left">
+<a href="https://www.helmholtz.de/en/"><img src="https://www.helmholtz.de/fileadmin/user_upload/05_aktuelles/Marke_Design/logos/HG_LOGO_S_ENG_RGB.jpg" alt="Helmholtz Logo" width="200px"></a>
+</p>
