@@ -50,8 +50,6 @@ Copyright (C) 2024 FZJ-ICE-2
 
 Active Developers: Julian Belina, Lilly Madeisky
 
-Alumni: Robin Beer, Henrik Büsing, Dilara Caglayan, Timo Kannengießer, Leander Kotzur, Stefan Kraus, Peter Markewitz, Lars Nolting,Stanley Risch, Martin Robinius, Bismark Singh, Andreas Smolenko, Peter Stenzel, Chloi Syranidou, Johannes Thürauf, Lara Welder, Michael Zier
-
 You should have received a copy of the MIT License along with this program.
 If not, see https://opensource.org/licenses/MIT
 
