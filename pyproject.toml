@@ -15,7 +15,7 @@ readme = "README.md"
 authors = [
     { name = "Julian Belina", email = "j.belina@fz-juelich.de" },
 ]
-license = { file = "LICENSE" }
+license = { file = "LICENSE.txt" }
 
 
 requires-python = ">=3.10"
