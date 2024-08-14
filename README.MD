@@ -1,8 +1,8 @@
 <a href="https://www.fz-juelich.de/en/ice/ice-2"><img src="https://github.com/FZJ-IEK3-VSA/README_assets/blob/main/JSA-Header.svg?raw=True" alt="Forschungszentrum Juelich Logo" width="300px"></a>
-# Jülich System Analysis DataManager
+# Jülich System Analysis Data Manager
 
-This library can be used to read and write data and the corresponding Meta Data according to the  Meta data standard of the Jülich System Analysis Meta Data standard.
-Currently only the meta data standard for the time series data is implemented. Further data types are in discussion.
+This library can be used to read and write data and associated metadata according to the Jülich System Analysis metadata Standard.
+Currently only the metadata standard for time series data is implemented. Other data types are under discussion.
 
 # Installation of the jsa_data_manager
 ## 1. Clone jsa_data_manager
@@ -29,17 +29,17 @@ or update an existing environment
 # Short package description
 At the moment you can use this package:
 ## 1. To read in time series 
-An example on how to use jsa_data_manager to read in your time series can be found here: *jsa_data_manager/examples/read_time_series/read_time_series.py*.
+An example of how to use jsa_data_manager to read in your time series can be found here: *jsa_data_manager/examples/read_time_series/read_time_series.py*.
 Example of the default format for a random timeseries.csv as input: *jsa_data_manager/examples/read_time_series/Random Electricity Time Series.csv*.
-In *jsa_data_manager/examples/write_time_series/Random Electricity Time Series.json* you also find an example of default meta data structure.
-**read_time_series.py** gives you the option of **a.** reading only meta data without times_series.csv, **b.** reading only your meta_data.json or **c.** reading both at the same time. In this case, the names should be the same as well as the storage location of the meta data and time series.
+See also *jsa_data_manager/examples/write_time_series/Random Electricity Time Series.json* for an example of default metadata structure.
+**read_time_series.py** gives you the option of **a.** reading only metadata without times_series.csv, **b.** reading only your meta_data.json or **c.** reading both at the same time. In this case, the names should be the same as well as the storage location of the metadata and time series.
 
-## 2. To write your time series and add the meta data
-An example on how to use jsa_data_manager to write your time series + meta data can be found here: *jsa_data_manager/examples/write_time_series*.
+## 2. To write your time series and add the metadata
+An example on how to use jsa_data_manager to write your time series + metadata can be found here: *jsa_data_manager/examples/write_time_series*.
 **write_time_series.py** gives you the option to 
-at the same time, add meta data to your time series and save your time_series_data_frame as a csv and the associated meta data in a destination folder. 
+at the same time, add metadata to your time series and save your time_series_data_frame as a csv and the associated metadata in a destination folder. 
 
-At the moment, only the *software case* is taken into account here. This means: You have created a time_series_data_frame with RESkit or another ETHOS.Suite package, for example. Various meta data can be added here with the *write_time_series_meta_data_software* function. In this particular software case, this is the name of the software and its version. 
+Currently, only the *software case* is taken into account here. This means: You have created a time_series_data_frame with RESkit or another ETHOS.Suite package, for example. Various metadata can be added using the *write_time_series_meta_data_software* function. In this particular software case, this is the name of the software and its version. 
 Other cases will follow soon. For example, time series from external sources.
 
 ## License
@@ -66,11 +66,8 @@ Every contributions are welcome:
 - If you want to report a bug, please open an [Issue](https://github.com/FZJ-IEK3-VSA/FINE/issues/new). We will then take care of the issue as soon as possible.
 - If you want to contribute with additional features or code improvements, open a [Pull request](https://github.com/FZJ-IEK3-VSA/FINE/pulls).
 
-## Code of Conduct
-Please respect our [code of conduct](CODE_OF_CONDUCT.md).
 
 ## Acknowledgement
-
 
 This work was supported by the Helmholtz Association under the program ["Energy System Design"](https://www.helmholtz.de/en/research/research-fields/energy/energy-system-design/).
 
