@@ -1,0 +1,5 @@
+pandas
+openpyxl
+netcdf4
+xarray
+pydantic

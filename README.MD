@@ -24,7 +24,7 @@ or update an existing environment
 ```conda activate jsa_data_manager_env```
 
 ## 5. Install the papckage
-```pip install -e .```
+```pip install -e . --no-dependencies```
 
 # Short package description
 At the moment you can use this package:

@@ -5,13 +5,15 @@
 ##   c. both can be loaded together                                               ##
 ####################################################################################
 
-#load packages
+# load packages
 import datetime
 import pathlib
-import pandas
+
 import numpy
-from jsa_data_manager.jsa_data_manager import JSADataManager
+import pandas
+
 from jsa_data_manager.data_types import TimeSeriesColumnEntryMetaData
+from jsa_data_manager.jsa_data_manager import JSADataManager
 
 jsa_data_manager = JSADataManager()
 current_directory = pathlib.Path(__file__).parent.absolute()

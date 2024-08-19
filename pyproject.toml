@@ -16,9 +16,26 @@ authors = [
     { name = "Julian Belina", email = "j.belina@fz-juelich.de" },
 ]
 license = { file = "LICENSE.txt" }
-
-
+dependencies = [
+  "pandas",
+  "openpyxl",
+  "netcdf4",
+  "xarray",
+  "pydantic"
+]
 requires-python = ">=3.10"
+
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Topic :: Scientific/Engineering :: Mathematics",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
 #Configureation options
 # https://docs.pytest.org/en/7.1.x/reference/reference.html#configuration-options
 

@@ -1,3 +1,4 @@
+LICENSE.txt
 README.md
 pyproject.toml
 src/jsa_data_manager/data_types.py
@@ -7,4 +8,5 @@ src/jsa_data_manager/warning_and_error.py
 src/jsa_data_manager.egg-info/PKG-INFO
 src/jsa_data_manager.egg-info/SOURCES.txt
 src/jsa_data_manager.egg-info/dependency_links.txt
+src/jsa_data_manager.egg-info/requires.txt
 src/jsa_data_manager.egg-info/top_level.txt
